@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ require __DIR__.'/auth.php';
 /*Route::get('/register', function () {
     return view('register');
     }); */
+
+    
