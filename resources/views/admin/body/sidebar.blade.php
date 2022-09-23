@@ -40,7 +40,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('dashboard')}}" class="nav-link">
+            
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -69,31 +70,31 @@
             </ul>
           </li>
           
-          <li class="nav-header">MISCELLANEOUS</li>
+          <li class="nav-header">BOOKS</li>
           <li class="nav-item">
             <a href="iframe.html" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
-              <p>Tabbed IFrame Plugin</p>
+              <p>List Books</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.1/" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Documentation</p>
+              <p>Add Books</p>
             </a>
           </li>
-          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+          <li class="nav-header">USERS</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="dashboard.index" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Level 1</p>
+              <p>List Users</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>
-                Level 1
+              Add Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -141,12 +142,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Level 1</p>
-            </a>
-          </li>
+          
           
         </ul>
       </nav>
