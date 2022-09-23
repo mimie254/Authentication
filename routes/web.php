@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AdminController;
+use App\Http\Controllers\Books\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,19 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
 
+Route::resource('books',BooksController::class);
+
+
+
+Route::get('create', function(){
+    return view('books.create');
+});
+
+
 require __DIR__.'/auth.php';
 
 /*Route::get('/register', function () {
     return view('register');
     }); */
-
+    //Route::get('create',[BooksController::class,'create'])->name('form.create');
     
