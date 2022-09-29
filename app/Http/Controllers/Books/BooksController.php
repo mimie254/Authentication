@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Book_list;
 
 class BooksController extends Controller
 {
@@ -24,7 +25,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        
+        return view('books.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book_list::create($request->all());
+        dd($request->all());
     }
 
     /**

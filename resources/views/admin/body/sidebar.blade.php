@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+            <a href="{{route('books.create')}}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Add Books</p>
             </a>

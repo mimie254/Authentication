@@ -26,10 +26,6 @@ Route::resource('books',BooksController::class);
 
 
 
-Route::get('create', function(){
-    return view('books.create');
-});
-
 
 require __DIR__.'/auth.php';
 
