@@ -69,6 +69,19 @@
               </li>
             </ul>
           </li>
+          <li class="nav-header">AUTHORS</li>
+          <li class="nav-item">
+            <a href="iframe.html" class="nav-link">
+              <i class="nav-icon fas fa-ellipsis-h"></i>
+              <p>List Authors</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('authors.create')}}" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Add Authors</p>
+            </a>
+          </li>
           
           <li class="nav-header">BOOKS</li>
           <li class="nav-item">

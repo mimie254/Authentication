@@ -16,7 +16,7 @@ class Test
      */
     public function handle(Request $request, Closure $next)
     {
-        abort(404);
+        //abort(404);
         return $next($request);
     }
 }

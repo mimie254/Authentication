@@ -26,6 +26,7 @@ class BooksController extends Controller
     public function create()
     {
         return view('books.create');
+        
     }
 
     /**
@@ -37,7 +38,9 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         Book_list::create($request->all());
-        dd($request->all());
+        //dd($request->all());
+        return redirect()->route('books.create');
+        
     }
 
     /**

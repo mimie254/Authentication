@@ -50,11 +50,11 @@
         </div>
         
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="categories" value="{{__('categories')}}" placeholder="categories">
+          <input type="text" class="form-control" name="categories" placeholder="categories">
         </div>
         
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="remarks" value="{{__('remarks')}}" placeholder="remarks">
+          <input type="text" class="form-control" name="remarks" placeholder="remarks">
         </div>
         
         
