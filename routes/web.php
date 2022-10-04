@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AdminController;
 use App\Http\Controllers\Books\BooksController;
+use App\Http\Controllers\Authors\AuthorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('books',BooksController::class);
+Route::resource('authors',AuthorsController::class);
 
 
 
