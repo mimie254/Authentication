@@ -15,7 +15,9 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        $data= Author::all();
+        return view('authors.index',['authors'=>$data]);
+    
     }
 
     /**
@@ -37,7 +39,8 @@ class AuthorsController extends Controller
     public function store(Request $request)
     {
         Author::create($request->all());
-       return redirect()->route('authors.create');
+       return redirect()->route('authors.index')->with('status','author added successfully');
+       
     }
 
     /**

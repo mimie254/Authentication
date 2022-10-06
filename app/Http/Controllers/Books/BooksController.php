@@ -15,7 +15,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        $data=Book_list::all();
+        return view ('books.index',['books'=>$data]);
     }
 
     /**
@@ -39,7 +40,7 @@ class BooksController extends Controller
     {
         Book_list::create($request->all());
         //dd($request->all());
-        return redirect()->route('books.create');
+        return redirect()->route('books.index')->with('status','book added successfully');
         
     }
 

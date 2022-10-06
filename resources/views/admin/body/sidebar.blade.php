@@ -71,7 +71,7 @@
           </li>
           <li class="nav-header">AUTHORS</li>
           <li class="nav-item">
-            <a href="iframe.html" class="nav-link">
+            <a href="{{route('authors.index')}}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>List Authors</p>
             </a>
@@ -85,7 +85,7 @@
           
           <li class="nav-header">BOOKS</li>
           <li class="nav-item">
-            <a href="iframe.html" class="nav-link">
+            <a href="{{route('books.index')}}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>List Books</p>
             </a>
@@ -98,7 +98,7 @@
           </li>
           <li class="nav-header">USERS</li>
           <li class="nav-item">
-            <a href="dashboard.index" class="nav-link">
+            <a href="iframe.html" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>List Users</p>
             </a>
