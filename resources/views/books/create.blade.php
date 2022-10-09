@@ -40,7 +40,7 @@
           <input type="text" class="form-control" name="title" value="{{old('title')}}"  autofocus  placeholder="Book Title"> 
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="author" value="{{old('author')}}" required placeholder="Author">
+          <input type="text" class="form-control" name="author" value="{{old('author')}}"  placeholder="Author">
          </div>
         <div class="input-group mb-3">
           <input type="date" class="form-control" name="year_of_publish" value="{{__('year_of_publish')}}" placeholder="Year of publish">

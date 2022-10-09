@@ -38,6 +38,12 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title'=>['required','min:5','max:10'],
+            'author'=>'required'
+        ]);
+
         Book_list::create($request->all());
         //dd($request->all());
         return redirect()->route('books.index')->with('status','book added successfully');

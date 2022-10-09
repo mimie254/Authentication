@@ -38,6 +38,10 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>['required','min:5','max:10'],
+            'nationality'=>'required'
+        ]);
         Author::create($request->all());
        return redirect()->route('authors.index')->with('status','author added successfully');
        

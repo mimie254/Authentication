@@ -33,14 +33,26 @@
               <div class="card-body">
       <p class="login-box-msg">Add New Author</p>
       @include('layouts.flash')
+
+      <!--@if($errors->any())
+      <div class="m-2 p-2">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li class="text-blue-400">{{$error}}</li>
+        @endforeach
+      </ul>
+      </div>
+      @endif-->
+
+
       <form method="POST" action="{{ route('authors.store') }}">
         
       @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="name" required autofocus  placeholder="Author Name"> 
+          <input type="text" class="form-control" name="name"  autofocus  placeholder="Author Name"> 
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="nationality"  required placeholder="Nationality">
+          <input type="text" class="form-control" name="nationality" placeholder="Nationality">
          </div>
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="no_of_books_published"  placeholder="No of Books Published">
