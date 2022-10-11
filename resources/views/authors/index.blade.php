@@ -47,6 +47,7 @@
                     <th>Awards won</th>
                     <th>Best Selling Book</th>
                     <th>Reviews</th>
+                    <th>Edit</th>
                   </tr>
                   </thead>
                  
@@ -62,7 +63,17 @@
 <td>{{ $author->awards_won }}</td>
 <td>{{ $author->best_selling_book }}</td>
 <td>{{ $author->reviews}}</td>
-
+<td>
+<a href="/authors/{{$author->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
+</td>
+<td>
+  <form action="{{route('authors.destroy',$author->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+<!--a href="/authors/{{$author->id}}/destroy"> <input type="button" name="delete" value="DELETE"> </-a-->
+</form>
+</td>
 </tr>
 @endforeach
                   

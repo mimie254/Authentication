@@ -62,7 +62,16 @@
 <td>{{ $book->cover_photo}}</td>
 <td>{{ $book->categories}}</td>
 <td>{{ $book->remarks}}</td>
-
+<td>
+<a href="/books/{{$book->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
+</td>
+<td>
+  <form action="{{route('books.destroy',$book->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+</form>
+</td>
 </tr>
 @endforeach
                   

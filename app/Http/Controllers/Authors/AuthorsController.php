@@ -66,7 +66,8 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data= Author::find($id);
+        return view('authors.edit',['data'=>$data]);
     }
 
     /**
@@ -76,19 +77,30 @@ class AuthorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id )
     {
-        //
+        $data=Author::find($request->id);
+        $data->name=$request->name;
+        $data->nationality=$request->nationality;
+        $data->no_of_books_published=$request->no_of_books_published;
+        $data->awards_won=$request->awards_won;
+        $data->best_selling_book=$request->best_selling_book;
+        $data->reviews=$request->reviews;
+        $data->save();
+        return redirect()->route('authors.index')->with('status','author edited successfully');
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id )
     {
-        //
+       $data=Author::find($id);
+       $data->delete($id);
+       return redirect()->route('authors.index')->with('status','author details deleted');
+
     }
+
 }

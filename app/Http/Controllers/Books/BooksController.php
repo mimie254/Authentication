@@ -69,7 +69,8 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data= Book_list::find($id);
+        return view('books.edit',['data'=>$data]);
     }
 
     /**
@@ -81,7 +82,15 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Book_list::find($request->id);
+        $data->title=$request->title;
+        $data->author=$request->author;
+        $data->year_of_publish=$request->year_of_publish;
+        $data->cover_photo=$request->cover_photo;
+        $data->categories=$request->categories;
+        $data->remarks=$request->remarks;
+        $data->save();
+        return redirect()->route('books.index')->with('status','book edited successfully');
     }
 
     /**
@@ -90,8 +99,10 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $data=Book_list::find($id);
+        $data->delete($id);
+        return redirect()->route('books.index')->with('status','book deleted');
     }
 }
