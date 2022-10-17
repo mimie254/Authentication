@@ -2,6 +2,8 @@
 @section('admin')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
+
     <!-- Content Header (Page header) -->
     @if(session('status'))
                 <div class="alert alert-success alert-dismissible">
@@ -33,7 +35,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                <h3 class="card-title">Author DataTable </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -48,6 +50,7 @@
                     <th>Best Selling Book</th>
                     <th>Reviews</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
                   </thead>
                  
@@ -67,15 +70,96 @@
 <a href="/authors/{{$author->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
 </td>
 <td>
-  <form action="{{route('authors.destroy',$author->id) }}" method="POST">
-    @csrf
+  
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{$author->id}}">
+    Delete
+  </button>
+  <div class="modal modal-danger fade" id="myModal_{{$author->id}}" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Delete Confirmation</h4>
+        </div>
+        
+      <form action="{{route('authors.destroy',$author->id) }}" method="POST" >
+    {{@csrf_field()}}
     @method('DELETE')
-    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-<!--a href="/authors/{{$author->id}}/destroy"> <input type="button" name="delete" value="DELETE"> </-a-->
-</form>
+    
+
+      <!-- Modal body -->
+      
+      <div class="modal-body">
+      <input type="hidden" name="_method"  value="DELETE"></input>
+        <p class="text-center">
+          Are you sure you want to delete {{$author->name}}?
+        </p>
+    
+      
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">No Close</button>
+        <button type="submit" class="btn btn-warning">Yes, Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+  
 </td>
 </tr>
 @endforeach
+
+
+
+<!-- The Modal -->
+
+
+
+
+
+<!-- Button trigger modal -->
+<!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</!--button>
+
+<!-- Modal -->
+
+<!--div class="modal modal-danger fade"  id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center"  id="exampleModalLabel">Delete confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{route('authors.destroy',$author->id) }}" method="POST">
+    {{@csrf_field()}}
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+<a href="/authors/{{$author->id}}/destroy"> <input type="button" name="delete" value="DELETE"> </-a>
+</form>
+      <div class="modal-body">
+        <p class="text-center">
+          Are you sure you want to delete this?
+</p>
+    <input type="hidden" name="category_id" id="cat_id" value="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+</!--div>
+
+
+
+
                   
                     
                   </tfoot>
@@ -97,6 +181,39 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  </div>
 
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+ <!-- Bootstrap tooltips -->
+ <script type="text/javascript" src="js/popper.min.js"></script>
+ <!-- Bootstrap core JavaScript -->
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
+ <!-- MDB core JavaScript -->
+ <script type="text/javascript" src="js/mdb.min.js"></script>
+ <script>
+
+<script type="text/javascript">
+
+  $(document).ready(function (){
+    var table = $('#datatable').DataTable();
+  
+    //Delete Record
+  table.on('click','.delete', function(){
+
+    $tr= $(this).closest('tr');
+    if($($tr).hasClass('child') ) {
+      $tr = $tr.prev('.parent');
+    }
+
+    var data = table.row($tr).data();
+    console.log(data);
+
+    $('#id').val(data[0])
+
+    $('#deleteForm').attr('action','/author/'+data[0]);
+    $('#deleteModal').modal('show');
+  });
+});
+</script>
 
             @endsection

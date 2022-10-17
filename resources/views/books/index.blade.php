@@ -47,6 +47,8 @@
                     <th>Cover Photo</th>
                     <th>Categories</th>
                     <th>Remarks</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
                   </thead>
                  

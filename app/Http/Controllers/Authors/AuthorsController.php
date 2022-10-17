@@ -97,8 +97,9 @@ class AuthorsController extends Controller
      */
     public function destroy(Request $request,$id )
     {
+        dd($id);
        $data=Author::find($id);
-       $data->delete($id);
+       $data->delete();
        return redirect()->route('authors.index')->with('status','author details deleted');
 
     }
