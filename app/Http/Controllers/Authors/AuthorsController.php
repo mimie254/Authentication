@@ -39,7 +39,7 @@ class AuthorsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>['required','min:5','max:10'],
+            'name'=>['required','min:5','max:100'],
             'nationality'=>'required'
         ]);
         Author::create($request->all());
@@ -97,7 +97,7 @@ class AuthorsController extends Controller
      */
     public function destroy(Request $request,$id )
     {
-        dd($id);
+        //dd($id);
        $data=Author::find($id);
        $data->delete();
        return redirect()->route('authors.index')->with('status','author details deleted');

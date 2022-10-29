@@ -47,8 +47,10 @@
                     <th>Cover Photo</th>
                     <th>Categories</th>
                     <th>Remarks</th>
+                    <th>Status</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    
                   </tr>
                   </thead>
                  
@@ -64,16 +66,57 @@
 <td>{{ $book->cover_photo}}</td>
 <td>{{ $book->categories}}</td>
 <td>{{ $book->remarks}}</td>
+<td>{{ $book->decoded_status}}</td>
 <td>
 <a href="/books/{{$book->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
 </td>
 <td>
-  <form action="{{route('books.destroy',$book->id) }}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-</form>
-</td>
+
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#myModal_{{$book->id}}">
+                                                    Delete
+                                                </button>
+                                                <div class="modal modal-danger fade" id="myModal_{{$book->id}}"
+                                                     id="deleteModal" tabindex="-1" role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title text-center">Delete
+                                                                    Confirmation</h4>
+                                                            </div>
+
+                                                            <form action="{{route('books.destroy',$book->id) }}"
+                                                                  method="POST">
+                                                            {{@csrf_field()}}
+                                                            @method('DELETE')
+                                                                <div class="modal-body">
+                                                                    <input type="hidden" name="_method"
+                                                                           value="DELETE"></input>
+                                                                    <p class="text-center">
+                                                                        Are you sure you want to
+                                                                        delete {{$book->name}}?
+                                                                    </p>
+
+
+                                                                </div>
+                                                                <!-- Modal footer -->
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-success"
+                                                                            data-bs-dismiss="modal">No Close
+                                                                    </button>
+                                                                    <button type="submit" class="btn btn-warning">Yes,
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </td>
 </tr>
 @endforeach
                   

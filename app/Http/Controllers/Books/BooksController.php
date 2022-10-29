@@ -16,7 +16,8 @@ class BooksController extends Controller
     public function index()
     {
         $data=Book_list::all();
-        return view ('books.index',['books'=>$data]);
+        //dd($data);
+     return view ('books.index',['books'=>$data]);
     }
 
     /**
@@ -40,7 +41,7 @@ class BooksController extends Controller
     {
 
         $request->validate([
-            'title'=>['required','min:5','max:10'],
+            'title'=>['required','min:5','max:100'],
             'author'=>'required'
         ]);
 

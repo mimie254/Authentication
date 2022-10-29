@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('cover_photo');
             $table->string('categories');
             $table->string('remarks');
-            $table->bolean('status')->default(true);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
