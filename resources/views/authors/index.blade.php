@@ -64,7 +64,12 @@
                                             <td>{{ $author->awards_won }}</td>
                                             <td>{{ $author->best_selling_book }}</td>
                                             <td>{{ $author->reviews}}</td>
-                                            <td>{{ $author->decoded_status}}</td>
+                                            <td>
+                                                @if ($author->decoded_status === 'active')
+                                                    <span class="alert alert-success">active</span>
+                                                @elseif ($author->decoded_status === 'inactive')
+                                                    <span class="mj_btn btn btn-danger">inactive</span>
+                                                @endif
                                             <td>
                                                 <a href="/authors/{{$author->id}}/edit"> <input type="button"
                                                                                                 name="edit"

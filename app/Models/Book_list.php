@@ -15,6 +15,7 @@ class Book_list extends Model
         switch($this->status){
             case 0:
                 return "inactive";
+               
                 break;
                 case 1:
                     return "active"; 

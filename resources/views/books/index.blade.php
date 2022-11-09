@@ -66,7 +66,13 @@
 <td>{{ $book->cover_photo}}</td>
 <td>{{ $book->categories}}</td>
 <td>{{ $book->remarks}}</td>
-<td>{{ $book->decoded_status}}</td>
+<td>
+@if ($book->decoded_status === 'active')
+    <span class="alert alert-success">active</span>
+@elseif ($book->decoded_status === 'inactive')
+    <span class="mj_btn btn btn-danger">inactive</span>
+@endif
+</td>
 <td>
 <a href="/books/{{$book->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
 </td>
