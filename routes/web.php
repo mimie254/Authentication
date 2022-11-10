@@ -26,7 +26,9 @@ Route::get('/dashboard', function () {
 Route::resource('books',BooksController::class);
 Route::resource('authors',AuthorsController::class);
 
-
+Route::get('/logout', function () {
+    return view('logout');
+})->middleware(['auth'])->name('logout');
 
 
 require __DIR__.'/auth.php';
