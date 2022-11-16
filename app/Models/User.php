@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -38,7 +39,22 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    public function getDecodedIsadminAttribute(){
+        switch($this->is_admin){
+            case 0:
+                return "user";
+                break;
+                case 1:
+                    return "is_admin"; 
+                    break;
+                    default:
+                    return"unknown";
+        }
+    }
+
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime','decoded_isadmin'
     ];
+
+
 }
