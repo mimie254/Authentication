@@ -5,6 +5,7 @@ use app\Http\Controllers\AdminController;
 use App\Http\Controllers\Books\BooksController;
 use App\Http\Controllers\Authors\AuthorsController;
 use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,16 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['test']);
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');*/
 
-Route::get('/dashboard2', function (){
+/*Route::get('/normaluserdashboard', function (){
     return view('dashboard2');
-});
-
+});*/
+ 
+Route::get('dashboard',[DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('dashboard2',[DashboardController::class,'dashboard2']);
 Route::resource('books',BooksController::class);
 Route::resource('authors',AuthorsController::class);
 Route::resource('users',UsersController::class);
