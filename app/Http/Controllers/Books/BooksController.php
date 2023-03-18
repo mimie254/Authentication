@@ -44,6 +44,7 @@ class BooksController extends Controller
             'title'=>['required','min:5','max:100'],
             'author'=>'required'
         ]);
+        //$request['created_by']=(Auth::user());
 
         Book_list::create($request->all());
         //dd($request->all());

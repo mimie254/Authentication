@@ -48,15 +48,12 @@
                     <th>Categories</th>
                     <th>Remarks</th>
                     <th>Status</th>
+                    <th>created_by</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    
                   </tr>
                   </thead>
-                 
-
-
-</tr>
+                </tr>
 @foreach ($books as $book)
 <tr>
 <td>{{ $book->id}}</td>
@@ -66,6 +63,8 @@
 <td>{{ $book->cover_photo}}</td>
 <td>{{ $book->categories}}</td>
 <td>{{ $book->remarks}}</td>
+
+
 <td>
 @if ($book->decoded_status === 'active')
     <span class="alert alert-success">active</span>
@@ -73,6 +72,7 @@
     <span class="mj_btn btn btn-danger">inactive</span>
 @endif
 </td>
+<th>created_by</th>
 <td>
 <a href="/books/{{$book->id}}/edit"> <input type="button" name="edit" value="EDIT"> </a>
 </td>
